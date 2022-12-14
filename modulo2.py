@@ -19,3 +19,15 @@ diff_locations = len(pd.unique(x))
 
 plt.hist(x, bins=diff_locations, orientation='horizontal')
 plt.show()
+
+df_sheldon_contains_penny = df[(df.Speaker == 'Sheldon') & (df.Text.str.contains('Penny'))]
+
+x = df_sheldon_contains_penny['Location']
+
+diff_locations = len(pd.unique(x))
+
+plt.hist(x, bins=diff_locations, orientation='horizontal')
+plt.show()
+
+df_scene_speaker = df[['Scene', 'Speaker']]
+
