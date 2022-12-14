@@ -15,5 +15,7 @@ df['Text'] = df['Text'].apply(lambda x: x.strip())
 df_sheldon_penny = df[(df.Speaker == 'Sheldon') & (df.Text == 'Penny.')]
 x = df_sheldon_penny['Location']
 
-plt.hist(x, bins=len(x), orientation='horizontal')
+diff_locations = len(pd.unique(x))
+
+plt.hist(x, bins=diff_locations, orientation='horizontal')
 plt.show()
