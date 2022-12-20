@@ -7,10 +7,16 @@ Created on Mon Dec 12 19:52:39 2022
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import sqlite3
+
+conn = sqlite3.connect('big_ban_theory.db')
 
 archivo = r'C:\Users\anton\Downloads\big_bang_theory_dataset.csv'
 df = pd.read_csv(archivo, encoding='UTF-8')
 df.fillna('', inplace=True)
+
+df.to_sql('big_ban_theory', conn, if_exists='replace')
+
 df['Text'] = df['Text'].apply(lambda x: x.strip())
 df_sheldon_penny = df[(df.Speaker == 'Sheldon') & (df.Text == 'Penny.')]
 x = df_sheldon_penny['Location']
